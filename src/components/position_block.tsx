@@ -1,13 +1,13 @@
 import React from 'react'
 
 interface PositionBlockProps  {
-    position?: number,
+    position: number,
     onChangePosition: Function,
 }
 
 const PositionBlock = ({position, onChangePosition}: PositionBlockProps) => {
     return (
-        <div className=" h-32 w-32 grid grid-rows-3 grid-flow-col gap-1">
+        <div className="h-20 w-20 grid grid-rows-3 grid-flow-col gap-1">
           <div className={"rounded-md hover:bg-gray-400 " + (position === 0 ? 'bg-gray-800' : 'bg-gray-200')} onClick={() => onChangePosition(position, 0)} title="0"></div>
           <div className={"rounded-md hover:bg-gray-400 " + (position === 3 ? 'bg-gray-800' : 'bg-gray-200')} onClick={() => onChangePosition(position, 3)} title="3"></div>
           <div className={"rounded-md hover:bg-gray-400 " + (position === 6 ? 'bg-gray-800' : 'bg-gray-200')} onClick={() => onChangePosition(position, 6)} title="6"></div>

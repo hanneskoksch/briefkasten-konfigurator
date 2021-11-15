@@ -18,7 +18,7 @@ const StampList = ({ stamps, onRemove, onPositionChange }: StampListProps) => {
     }
   }
   return (
-    <div>
+    <div className="w-52">
       {stampsArray}
     </div>
   );

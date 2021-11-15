@@ -42,13 +42,13 @@ function App() {
   return (
     <div className="bg-gray-800 h-screen">
     <div className="flex flex-wrap">
-      <div className="bg-white rounded-xl m-10">
+      <div className="bg-white rounded-xl m-5">
         <div className="relative">
           <img className="relative top-0 left-0" src={base} alt="Briefkasten" />
           <StampsImageOverlay stamps={stamps} />
         </div>
       </div>
-      <div className="bg-white rounded-xl m-10 p-5">
+      <div className="bg-white rounded-xl m-5 p-5">
         <Heading text="Stempel"/>
         <StampList stamps={stamps} onRemove={removeStamp} onPositionChange={moveStampToNewPosition}/>
         <AddStampBox onClick={addNewStamp}/>
