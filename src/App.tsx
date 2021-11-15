@@ -1,12 +1,15 @@
 import base from "./img/base-blue.png";
 import "./App.css";
-import stampPositions from "./utils/stam_positions";
+import stampPositions from "./utils/stamp_positions";
 import { useState } from 'react';
 import Stamp from "./components/stamp";
+import Heading from "./components/heading";
+import Checkbox from "./components/checkbox";
 
 function App() {
 
   const [selected, setSelected] = useState(0);
+  const [nameField, setNameField] = useState(false);
 
   const divClickedHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     const div = event.currentTarget;
@@ -23,8 +26,8 @@ function App() {
         </div>
       </div>
       <div className="bg-white rounded-xl m-10 p-5">
-        <div className="text-center text-blue-900 font-bold text-xl">Position Stempel</div>
-        <div className="h-52 w-52 grid grid-rows-3 grid-flow-col gap-1 p-2">
+        <Heading text="Position Stempel"/>
+        <div className="h-52 w-52 grid grid-rows-3 grid-flow-col gap-1">
           <div className={"rounded-md hover:bg-gray-400 " + (selected === 0 ? 'bg-gray-800' : 'bg-gray-200')} onClick={divClickedHandler} title="0"></div>
           <div className={"rounded-md hover:bg-gray-400 " + (selected === 3 ? 'bg-gray-800' : 'bg-gray-200')} onClick={divClickedHandler} title="3"></div>
           <div className={"rounded-md hover:bg-gray-400 " + (selected === 6 ? 'bg-gray-800' : 'bg-gray-200')} onClick={divClickedHandler} title="6"></div>
@@ -38,6 +41,8 @@ function App() {
           <div className={"rounded-md hover:bg-gray-400 " + (selected === 8 ? 'bg-gray-800' : 'bg-gray-200')} onClick={divClickedHandler} title="8"></div>
 
         </div>
+        <Heading text="Namensschild"/>
+        <Checkbox checked={nameField} setChecked={setNameField}/>
       </div>
       </div>
     </div>
