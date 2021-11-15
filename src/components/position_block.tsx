@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface PositionBlockProps  {
-    position: number,
+    position?: number,
     onChangePosition: Function,
 }
 

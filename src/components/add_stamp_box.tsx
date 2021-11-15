@@ -1,14 +1,17 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa";
 
-interface AddStampBoxProps  {
-    onClick: Function,
+interface AddStampBoxProps {
+  onClick: Function;
 }
 
-const AddStampBox = ({onClick}: AddStampBoxProps) => {
+const AddStampBox = ({ onClick }: AddStampBoxProps) => {
   return (
     <div className="flex justify-center">
-      <div className="h-8 w-8 m-2 bg-gray-200 hover:bg-green-200 font-bold rounded flex justify-center items-center">
+      <div
+        className="h-8 w-8 m-2 bg-gray-200 hover:bg-green-200 font-bold rounded flex justify-center items-center"
+        onClick={() => onClick()}
+      >
         <FaPlus />
       </div>
     </div>

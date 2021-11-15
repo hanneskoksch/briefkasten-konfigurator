@@ -1,16 +1,17 @@
 import React from 'react'
+import { Stamp } from '../model/image_data_models';
 import PositionBlock from './position_block'
 import RemoveStampBox from './remove_stamp_box';
 
 interface StampListItemProps  {
-    name: String,
+    stamp: Stamp,
 }
 
-const StampListItem = ({name}: StampListItemProps) => {
+const StampListItem = ({stamp}: StampListItemProps) => {
     return (
         <div className="bg-white rounded p-2 flex w-64 justify-between">
             <div>
-                <div className="font-bold">{name}</div>
+                <div className="font-bold">{stamp.name}</div>
                 <RemoveStampBox onClick={() => {}}/>
             </div>
             <PositionBlock position={1} onChangePosition={() => {}}/>
