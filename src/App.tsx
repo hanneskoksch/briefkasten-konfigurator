@@ -5,6 +5,8 @@ import { useState } from 'react';
 import Stamp from "./components/stamp";
 import Heading from "./components/heading";
 import Checkbox from "./components/checkbox";
+import AddStampBox from "./components/add_stamp_box";
+import StampListItem from "./components/stamp_list_item";
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
     setSelected(parseInt(div.title));
   };
 
+  function addNewStamp() {}
+
   return (
     <div className="bg-gray-800 h-screen">
     <div className="flex flex-wrap">
@@ -26,7 +30,9 @@ function App() {
         </div>
       </div>
       <div className="bg-white rounded-xl m-10 p-5">
-        <Heading text="Position Stempel"/>
+        <Heading text="Stempel"/>
+        <StampListItem name="test" />
+        <AddStampBox onClick={addNewStamp}/>
         <div className="h-52 w-52 grid grid-rows-3 grid-flow-col gap-1">
           <div className={"rounded-md hover:bg-gray-400 " + (selected === 0 ? 'bg-gray-800' : 'bg-gray-200')} onClick={divClickedHandler} title="0"></div>
           <div className={"rounded-md hover:bg-gray-400 " + (selected === 3 ? 'bg-gray-800' : 'bg-gray-200')} onClick={divClickedHandler} title="3"></div>

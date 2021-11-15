@@ -1,6 +1,10 @@
-interface StampPosition {
+export interface StampPosition {
     top: number,
     left: number,
 }
 
-export default StampPosition;
+export interface Stamp {
+    imageName: String,
+    name: String,
+    position?: number,
+}
