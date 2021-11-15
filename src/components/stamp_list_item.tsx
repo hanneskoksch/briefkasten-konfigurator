@@ -5,16 +5,19 @@ import RemoveStampBox from './remove_stamp_box';
 
 interface StampListItemProps  {
     stamp: Stamp,
+    position: number,
+    onRemove: Function,
+    onPositionChange: Function,
 }
 
-const StampListItem = ({stamp}: StampListItemProps) => {
+const StampListItem = ({stamp, position, onRemove, onPositionChange }: StampListItemProps) => {
     return (
         <div className="bg-white rounded p-2 flex w-64 justify-between">
             <div>
                 <div className="font-bold">{stamp.name}</div>
-                <RemoveStampBox onClick={() => {}}/>
+                <RemoveStampBox onClick={() => onRemove(position)}/>
             </div>
-            <PositionBlock position={1} onChangePosition={() => {}}/>
+            <PositionBlock position={position} onChangePosition={onPositionChange}/>
             
         </div>
     )

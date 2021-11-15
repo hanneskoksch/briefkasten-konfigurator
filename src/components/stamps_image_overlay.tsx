@@ -11,6 +11,8 @@ const StampsImageOverlay = ({ stamps }: StampsImageOverlayProps) => {
   for (let i = 0; i < 9; i++) {
     if (stamps[i] != null) {
       arr.push(<StampImage stamp={stamps[i]!} position={i} key={i} />);
+    } else {
+      arr.push(null);
     }
   }
   return <div>{arr}</div>;
