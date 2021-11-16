@@ -1,9 +1,9 @@
 import React from "react";
-import { StampsMap } from "../model/image_data_models";
+import { Stamp } from "../../model/image_data_models";
 import StampImage from "./stamp_image";
 
 interface StampsImageOverlayProps {
-  stamps: StampsMap;
+  stamps: (Stamp | null)[];
 }
 
 const StampsImageOverlay = ({ stamps }: StampsImageOverlayProps) => {

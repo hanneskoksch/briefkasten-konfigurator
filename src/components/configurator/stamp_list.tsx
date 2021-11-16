@@ -1,9 +1,9 @@
 import React from "react";
-import { StampsMap } from ".././model/image_data_models";
+import { Stamp } from "../../model/image_data_models";
 import StampListItem from "./stamp_list_item";
 
 interface StampListProps {
-  stamps: StampsMap;
+  stamps: (Stamp | null)[];
   onRemove: Function,
   onPositionChange: Function,
 }

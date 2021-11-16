@@ -1,12 +1,12 @@
 import base from "./img/base-blue.png";
 import "./App.css";
 import { useState } from 'react';
-import Heading from "./components/heading";
-import Checkbox from "./components/checkbox";
-import AddStampBox from "./components/add_stamp_box";
+import Heading from "./components/configurator/heading";
+import Checkbox from "./components/configurator/checkbox";
+import AddStampBox from "./components/configurator/add_stamp_box";
 import stampsDatabase from "./utils/stamps_database";
-import StampList from "./components/stamp_list";
-import StampsImageOverlay from "./components/stamps_image_overlay";
+import StampList from "./components/configurator/stamp_list";
+import StampsImageOverlay from "./components/image/stamps_image_overlay";
 import { Stamp } from './model/image_data_models' 
 
 function App() {
