@@ -8,9 +8,12 @@ import stampsDatabase from "./utils/stamps_database";
 import StampList from "./components/configurator/stamp_list";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
 import { Stamp } from './model/image_data_models' 
+import BaseColorList from "./components/configurator/base_color_list";
+import { BaseColor } from "./utils/enums";
 
 function App() {
 
+  const [baseColor, setBaseColor] = useState<BaseColor>(BaseColor.Blue);
   const [stamps, setStamps] = useState<(Stamp | null)[]>([null,null,null,null,null,null,null,null,null]);
   const [nameField, setNameField] = useState<boolean>(false);
 
@@ -49,6 +52,8 @@ function App() {
         </div>
       </div>
       <div className="bg-white rounded-xl m-5 p-5">
+        <Heading text="Grundfarbe"/>
+        <BaseColorList />
         <Heading text="Stempel"/>
         <StampList stamps={stamps} onRemove={removeStamp} onPositionChange={moveStampToNewPosition}/>
         <AddStampBox onClick={addNewStamp}/>
