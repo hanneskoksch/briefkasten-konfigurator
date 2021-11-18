@@ -1,6 +1,6 @@
 export enum BaseColor {
-    Blue,
-    White,
-    Grey,
-    Green,
+    Blue = 'blue',
+    White = 'white',
+    Grey = 'grey',
+    Green = 'green',
 }

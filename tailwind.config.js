@@ -3,7 +3,12 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'glazeblue': "url('./img/color-blue.png')",
+        'glazewhite': "url('./img/color-white.png')",
+       }
+    },
   },
   variants: {
     extend: {},

@@ -2,12 +2,12 @@ import React from "react";
 import { BaseColor } from "../../utils/enums";
 
 interface ColorThumbnailProps {
-  baseColor: BaseColor;
+  colorClass: String;
   onClick: Function;
 }
 
-const BaseColorThumbnail = ({ baseColor }: ColorThumbnailProps) => {  return (
-    <div className="h-16 w-16 m-1 border-4 border-gray-800 rounded-full bg-blue-400">
+const BaseColorThumbnail = ({ colorClass }: ColorThumbnailProps) => {  return (
+    <div className={"h-16 w-16 m-1 border-4 border-gray-800 rounded-full bg-glazeblue " + colorClass}>
       {
         //todo image from image database
       }
