@@ -1,7 +1,7 @@
 import React from "react";
-import schnecke1 from "../img/stempel-schnecke1.png";
-import { Stamp } from "../model/image_data_models";
-import stampPositions from "../utils/stamp_positions";
+import schnecke1 from "../../img/stempel-schnecke1.png";
+import { Stamp } from "../../model/image_data_models";
+import stampPositions from "../../utils/stamp_positions";
 
 interface StampImageProps {
   stamp: Stamp,
