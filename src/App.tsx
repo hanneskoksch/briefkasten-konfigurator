@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Heading from "./components/heading";
 import Checkbox from "./components/checkbox";
 import AddStampBox from "./components/add_stamp_box";
-import stampsDatabase from "./utils/stamps_database";
+import { stampsDatabase } from "./utils/stamps_database";
 import StampList from "./components/stamp_list";
 import StampsImageOverlay from "./components/stamps_image_overlay";
 import { Stamp } from './model/image_data_models' 
