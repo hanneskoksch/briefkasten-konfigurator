@@ -1,6 +1,6 @@
 export enum BaseColor {
-    Blue = 'blue',
-    White = 'white',
-    Grey = 'grey',
-    Green = 'green',
+    Blue = 'bg-glazeblue',
+    White = 'bg-glazewhite',
+    Grey = 'bg-glazegrey',
+    Green = 'bg-glazegreen',
 }
