@@ -9,6 +9,7 @@ import StampsImageOverlay from "./components/image/stamps_image_overlay";
 import { Stamp } from "./model/image_data_models";
 import BaseColorList from "./components/configurator/base_color_list";
 import { BaseColor } from "./utils/enums";
+import NameField from "./img/nametag.png";
 
 function App() {
   const [baseColor, setBaseColor] = useState<BaseColor>(BaseColor.Blue);
@@ -54,6 +55,14 @@ function App() {
     return baseDatabase.find((e) => e.enum === baseColor)?.image!;
   }
 
+  function setNameFiledState(checked: boolean) {
+    const newArray = stamps.slice(); // copy the array
+    newArray[0] = null;
+    newArray[1] = null;
+    setStamps(newArray);
+    setNameField(checked);
+  }
+
   return (
     <div className="bg-gray-800 h-screen">
       <div className="flex flex-wrap">
@@ -64,6 +73,13 @@ function App() {
               src={getBase()}
               alt="Briefkasten"
             />
+            {nameField && (
+              <img
+                className="absolute top-0 left-0"
+                src={NameField}
+                alt="Namensschild"
+              />
+            )}
             <StampsImageOverlay stamps={stamps} />
           </div>
         </div>
@@ -78,7 +94,7 @@ function App() {
           />
           <AddStampBox onClick={addNewStamp} />
           <Heading text="Namensschild" />
-          <Checkbox checked={nameField} setChecked={setNameField} />
+          <Checkbox checked={nameField} setChecked={setNameFiledState} />
         </div>
       </div>
     </div>
