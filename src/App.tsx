@@ -64,9 +64,12 @@ function App() {
   }
 
   return (
-    <div className="bg-gray-800 h-screen">
+    <div className="h-screen">
+      <div className="bg-red-200 border-red-400 border-2 rounded text-red-600 px-2 absolute">
+        Alpha-Version
+      </div>
       <div className="flex flex-wrap">
-        <div className="bg-white rounded-xl m-5">
+        <div className="bg-white rounded-xl">
           <div className="relative">
             <img
               className="relative top-0 left-0"
@@ -83,7 +86,7 @@ function App() {
             <StampsImageOverlay stamps={stamps} />
           </div>
         </div>
-        <div className="bg-white rounded-xl m-5 p-5">
+        <div className="bg-white rounded-xl p-5">
           <Heading text="Grundfarbe" />
           <BaseColorList onClick={setBaseColor} baseColor={baseColor} />
           <Heading text="Stempel" />
