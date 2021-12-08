@@ -12,7 +12,7 @@ interface StampListItemProps  {
 
 const StampListItem = ({stamp, position, onRemove, onPositionChange }: StampListItemProps) => {
     return (
-        <div className="bg-white rounded p-2 flex justify-between">
+        <div className="bg-gray-100 rounded p-2 flex justify-between my-2">
             <div>
                 <div className="font-bold">{stamp.name}</div>
                 <RemoveStampBox onClick={() => onRemove(position)}/>
