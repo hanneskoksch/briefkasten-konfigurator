@@ -10,4 +10,5 @@ export interface Stamp {
   image?: string;
   name: string;
   enum?: BaseColor;
+  position?: number;
 }
