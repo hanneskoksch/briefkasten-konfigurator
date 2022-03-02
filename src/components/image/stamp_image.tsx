@@ -4,19 +4,18 @@ import { Stamp } from "../../model/image_data_models";
 import stampPositions from "../../utils/stamp_positions";
 
 interface StampImageProps {
-  stamp: Stamp,
-  position: number,
+  stamp: Stamp;
 }
 
-const StampImage = ({stamp, position}: StampImageProps) => {
+const StampImage = ({ stamp }: StampImageProps) => {
   return (
     <img
       className={`absolute`}
       src={schnecke1}
       alt="Stempel"
       style={{
-        left: `${stampPositions[position].left}px`,
-        top: `${stampPositions[position].top}px`,
+        left: `${stampPositions[stamp.position!].left}px`,
+        top: `${stampPositions[stamp.position!].top}px`,
       }}
     />
   );

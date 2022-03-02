@@ -1,66 +1,74 @@
 import "./App.css";
-import { useState } from "react";
 import Heading from "./components/configurator/heading";
 import Checkbox from "./components/configurator/checkbox";
 import AddStampBox from "./components/configurator/add_stamp_box";
 import { baseDatabase, stampsDatabase } from "./utils/stamps_database";
 import StampList from "./components/configurator/stamp_list";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
-import { Stamp } from "./model/image_data_models";
 import BaseColorList from "./components/configurator/base_color_list";
 import { BaseColor } from "./utils/enums";
 import NameField from "./img/nametag.png";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./store";
+import {
+  addStamp,
+  changeStampPosition,
+  removeStamp,
+} from "./slices/stampSlice";
+import { changeColor } from "./slices/colorSlice";
+import { toggleNameField } from "./slices/nameFieldSlice";
 
 function App() {
-  const [baseColor, setBaseColor] = useState<BaseColor>(BaseColor.Blue);
-  const [stamps, setStamps] = useState<(Stamp | null)[]>([
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-  ]);
-  const [nameField, setNameField] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
-  function addNewStamp(): void {
-    for (let i = 0; i < 9; i++) {
-      if (stamps[i] == null) {
-        const newArray = stamps.slice(); // copy the array
-        newArray[i] = stampsDatabase[0];
-        setStamps(newArray);
-        return;
-      }
-    }
+  // State
+  const stampsState = useSelector((state: RootState) => state.stamps.value);
+  const colorState = useSelector((state: RootState) => state.color.value);
+  const nameFieldState = useSelector(
+    (state: RootState) => state.namefield.value
+  );
+
+  /**
+   * Toggles the name field state.
+   * @param isActive The state of the checkbox.
+   */
+  function onToggleNameField(isActive: boolean): void {
+    dispatch(toggleNameField(isActive));
   }
 
-  function removeStamp(position: number) {
-    const newArray = stamps.slice(); // copy the array
-    newArray[position] = null;
-    setStamps(newArray);
+  /**
+   * A new regular stamp gets added.
+   */
+  function onAddStampList(): void {
+    dispatch(addStamp({ ...stampsDatabase[0], position: 0 }));
   }
 
+  /**
+   * A regular stamp gets removed.
+   * @param index The index of the element which gets removed.
+   */
+  function onRemoveStampList(index: number): void {
+    dispatch(removeStamp(index));
+  }
+
+  /**
+   * A different letterbox color gets selected.
+   */
+  function onColorSelect(color: BaseColor): void {
+    dispatch(changeColor(color));
+  }
+
+  /**
+   * Changes position of the stamp on the letterbox.
+   * @param oldPosition The old position on the letterbox (number from 0 - 8)
+   * @param newPosition The new position on the letterbox (number from 0 - 8)
+   */
   function moveStampToNewPosition(oldPosition: number, newPosition: number) {
-    const newArray = stamps.slice(); // copy the array
-    newArray[newPosition] = newArray[oldPosition];
-    newArray[oldPosition] = null;
-    setStamps(newArray);
-    console.log(stamps);
+    dispatch(changeStampPosition({ oldPosition, newPosition }));
   }
 
   function getBase(): string {
-    return baseDatabase.find((e) => e.enum === baseColor)?.image!;
-  }
-
-  function setNameFiledState(checked: boolean) {
-    const newArray = stamps.slice(); // copy the array
-    newArray[0] = null;
-    newArray[1] = null;
-    setStamps(newArray);
-    setNameField(checked);
+    return baseDatabase.find((e) => e.enum === colorState)?.image!;
   }
 
   return (
@@ -76,28 +84,28 @@ function App() {
               src={getBase()}
               alt="Briefkasten"
             />
-            {nameField && (
+            {nameFieldState && (
               <img
                 className="absolute top-0 left-0"
                 src={NameField}
                 alt="Namensschild"
               />
             )}
-            <StampsImageOverlay stamps={stamps} />
+            <StampsImageOverlay stamps={stampsState} />
           </div>
         </div>
         <div className="bg-white rounded-xl p-5">
           <Heading text="Grundfarbe" />
-          <BaseColorList onClick={setBaseColor} baseColor={baseColor} />
+          <BaseColorList onClick={onColorSelect} baseColor={colorState} />
           <Heading text="Stempel" />
           <StampList
-            stamps={stamps}
-            onRemove={removeStamp}
+            stamps={stampsState}
+            onRemove={onRemoveStampList}
             onPositionChange={moveStampToNewPosition}
           />
-          <AddStampBox onClick={addNewStamp} />
+          <AddStampBox onClick={onAddStampList} />
           <Heading text="Namensschild" />
-          <Checkbox checked={nameField} setChecked={setNameFiledState} />
+          <Checkbox checked={nameFieldState} setChecked={onToggleNameField} />
         </div>
       </div>
     </div>
