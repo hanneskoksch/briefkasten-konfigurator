@@ -14,6 +14,16 @@ import stamp1mr from "../img/stamp-1-mr.png";
 import stamp1bl from "../img/stamp-1-bl.png";
 import stamp1bm from "../img/stamp-1-bm.png";
 import stamp1br from "../img/stamp-1-br.png";
+import stamp2 from "../img/stamp-2.png";
+import stamp2tl from "../img/stamp-2-tl.png";
+import stamp2tm from "../img/stamp-2-tm.png";
+import stamp2tr from "../img/stamp-2-tr.png";
+import stamp2ml from "../img/stamp-2-ml.png";
+import stamp2mm from "../img/stamp-2-mm.png";
+import stamp2mr from "../img/stamp-2-mr.png";
+import stamp2bl from "../img/stamp-2-bl.png";
+import stamp2bm from "../img/stamp-2-bm.png";
+import stamp2br from "../img/stamp-2-br.png";
 
 export const stampsDatabase: Stamp[] = [
   {
@@ -29,6 +39,21 @@ export const stampsDatabase: Stamp[] = [
       stamp1bl,
       stamp1bm,
       stamp1br,
+    ],
+  },
+  {
+    name: "Blatt 1",
+    image: stamp2,
+    images: [
+      stamp2tl,
+      stamp2tm,
+      stamp2tr,
+      stamp2ml,
+      stamp2mm,
+      stamp2mr,
+      stamp2bl,
+      stamp2bm,
+      stamp2br,
     ],
   },
 ];
