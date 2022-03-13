@@ -13,6 +13,7 @@ const BaseColorList = ({ onClick, baseColor }: BaseColorListProps) => {
     <div className="flex">
       {baseDatabase.map((base, i) => (
         <BaseColorThumbnail
+          key={i}
           onClick={onClick}
           baseColor={baseColor}
           colorClass={base.enum!}
