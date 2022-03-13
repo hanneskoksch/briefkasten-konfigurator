@@ -94,12 +94,12 @@ function App() {
           <Heading text="Grundfarbe" />
           <BaseColorList onClick={onColorSelect} baseColor={colorState} />
           <Heading text="Stempel" />
+          <StampSelectorBoxes onClick={onAddStampList} />
           <StampList
             stamps={stampsState}
             onRemove={onRemoveStampList}
             onPositionChange={moveStampToNewPosition}
           />
-          <StampSelectorBoxes onClick={onAddStampList} />
           <Heading text="Namensschild" />
           <Checkbox checked={nameFieldState} setChecked={onToggleNameField} />
         </div>
