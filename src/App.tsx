@@ -40,7 +40,7 @@ function App() {
    * A new regular stamp gets added.
    */
   function onAddStampList(): void {
-    dispatch(addStamp({ ...stampsDatabase[0], position: 0 }));
+    dispatch(addStamp(stampsDatabase[0]));
   }
 
   /**
