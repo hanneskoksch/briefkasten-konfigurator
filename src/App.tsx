@@ -1,4 +1,3 @@
-import "./App.css";
 import Heading from "./components/configurator/heading";
 import Checkbox from "./components/configurator/checkbox";
 import AddStampBox from "./components/configurator/add_stamp_box";
@@ -73,9 +72,6 @@ function App() {
 
   return (
     <div className="h-screen">
-      <div className="bg-red-200 border-red-400 border-2 rounded text-red-600 px-2 absolute">
-        Alpha-Version
-      </div>
       <div className="flex flex-wrap">
         <div className="bg-white rounded-xl">
           <div className="relative">
