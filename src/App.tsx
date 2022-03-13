@@ -1,7 +1,5 @@
-import "./App.css";
 import Heading from "./components/configurator/heading";
 import Checkbox from "./components/configurator/checkbox";
-import AddStampBox from "./components/configurator/add_stamp_box";
 import { baseDatabase, stampsDatabase } from "./utils/stamps_database";
 import StampList from "./components/configurator/stamp_list";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
@@ -17,6 +15,7 @@ import {
 } from "./slices/stampSlice";
 import { changeColor } from "./slices/colorSlice";
 import { toggleNameField } from "./slices/nameFieldSlice";
+import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,8 +38,8 @@ function App() {
   /**
    * A new regular stamp gets added.
    */
-  function onAddStampList(): void {
-    dispatch(addStamp(stampsDatabase[0]));
+  function onAddStampList(index: number): void {
+    dispatch(addStamp(stampsDatabase[index]));
   }
 
   /**
@@ -73,9 +72,6 @@ function App() {
 
   return (
     <div className="h-screen">
-      <div className="bg-red-200 border-red-400 border-2 rounded text-red-600 px-2 absolute">
-        Alpha-Version
-      </div>
       <div className="flex flex-wrap">
         <div className="bg-white rounded-xl">
           <div className="relative">
@@ -98,12 +94,12 @@ function App() {
           <Heading text="Grundfarbe" />
           <BaseColorList onClick={onColorSelect} baseColor={colorState} />
           <Heading text="Stempel" />
+          <StampSelectorBoxes onClick={onAddStampList} />
           <StampList
             stamps={stampsState}
             onRemove={onRemoveStampList}
             onPositionChange={moveStampToNewPosition}
           />
-          <AddStampBox onClick={onAddStampList} />
           <Heading text="Namensschild" />
           <Checkbox checked={nameFieldState} setChecked={onToggleNameField} />
         </div>
