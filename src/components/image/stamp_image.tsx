@@ -1,5 +1,4 @@
 import React from "react";
-import schnecke1 from "../../img/stamp-1-tl.png";
 import { Stamp } from "../../model/image_data_models";
 import { stampsDatabase } from "../../utils/stamps_database";
 
