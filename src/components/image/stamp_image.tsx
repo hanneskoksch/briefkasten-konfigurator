@@ -1,6 +1,5 @@
 import React from "react";
 import { Stamp } from "../../model/image_data_models";
-import { stampsDatabase } from "../../utils/stamps_database";
 
 interface StampImageProps {
   stamp: Stamp;
