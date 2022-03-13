@@ -1,6 +1,5 @@
 import Heading from "./components/configurator/heading";
 import Checkbox from "./components/configurator/checkbox";
-import AddStampBox from "./components/configurator/add_stamp_box";
 import { baseDatabase, stampsDatabase } from "./utils/stamps_database";
 import StampList from "./components/configurator/stamp_list";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
@@ -16,6 +15,7 @@ import {
 } from "./slices/stampSlice";
 import { changeColor } from "./slices/colorSlice";
 import { toggleNameField } from "./slices/nameFieldSlice";
+import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,8 +38,8 @@ function App() {
   /**
    * A new regular stamp gets added.
    */
-  function onAddStampList(): void {
-    dispatch(addStamp(stampsDatabase[0]));
+  function onAddStampList(index: number): void {
+    dispatch(addStamp(stampsDatabase[index]));
   }
 
   /**
@@ -99,7 +99,7 @@ function App() {
             onRemove={onRemoveStampList}
             onPositionChange={moveStampToNewPosition}
           />
-          <AddStampBox onClick={onAddStampList} />
+          <StampSelectorBoxes onClick={onAddStampList} />
           <Heading text="Namensschild" />
           <Checkbox checked={nameFieldState} setChecked={onToggleNameField} />
         </div>

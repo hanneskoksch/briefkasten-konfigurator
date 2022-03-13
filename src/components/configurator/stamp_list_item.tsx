@@ -17,11 +17,9 @@ const StampListItem = ({
   onPositionChange,
 }: StampListItemProps) => {
   return (
-    <div className="bg-gray-100 rounded p-2 flex justify-between my-2">
-      <div>
-        <div className="font-bold">{stamp.name}</div>
-        <RemoveStampBox onClick={() => onRemove(index)} />
-      </div>
+    <div className="bg-gray-100 rounded p-2 flex justify-between my-2 items-center">
+      <img src={stamp.image} alt="Stempel" />
+      <RemoveStampBox onClick={() => onRemove(index)} />
       <PositionBlock
         position={stamp.position!}
         onChangePosition={onPositionChange}
