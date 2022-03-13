@@ -1,14 +1,20 @@
 import { BaseColor } from "../utils/enums";
 
-export interface StampPosition {
-  top: number;
-  left: number;
+export interface Base {
+  imageName: string;
+  image: string;
+  name: string;
+  enum: BaseColor;
+}
+
+export interface Color {
+  imageName: string;
+  name: string;
 }
 
 export interface Stamp {
-  imageName: string;
-  image?: string;
   name: string;
-  enum?: BaseColor;
+  image: string;
+  images: string[];
   position?: number;
 }

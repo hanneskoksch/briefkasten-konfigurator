@@ -8,11 +8,11 @@ interface StampsImageOverlayProps {
 
 const StampsImageOverlay = ({ stamps }: StampsImageOverlayProps) => {
   return (
-    <div>
+    <>
       {stamps.map((stamp, i) => (
         <StampImage stamp={stamp} key={i} />
       ))}
-    </div>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
-import schnecke1 from "../../img/stempel-schnecke1.png";
+import schnecke1 from "../../img/stamp-1-tl.png";
 import { Stamp } from "../../model/image_data_models";
-import stampPositions from "../../utils/stamp_positions";
+import { stampsDatabase } from "../../utils/stamps_database";
 
 interface StampImageProps {
   stamp: Stamp;
@@ -10,13 +10,9 @@ interface StampImageProps {
 const StampImage = ({ stamp }: StampImageProps) => {
   return (
     <img
-      className={`absolute`}
-      src={schnecke1}
+      className="absolute top-0 left-0"
+      src={stampsDatabase[0].images[stamp.position!]}
       alt="Stempel"
-      style={{
-        left: `${stampPositions[stamp.position!].left}px`,
-        top: `${stampPositions[stamp.position!].top}px`,
-      }}
     />
   );
 };
