@@ -15,6 +15,5 @@ export interface Color {
 export interface Stamp {
   name: string;
   image: string;
-  images: string[];
   position?: number;
 }
