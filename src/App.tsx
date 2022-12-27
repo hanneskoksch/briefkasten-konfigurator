@@ -80,6 +80,11 @@ function App() {
               src={getBase()}
               alt="Briefkasten"
             />
+            <div className="absolute perspective-container">
+              <div className=" perspective">
+               <StampsImageOverlay stamps={stampsState} />
+              </div>
+            </div>
             {nameFieldState && (
               <img
                 className="absolute top-0 left-0"
@@ -87,10 +92,9 @@ function App() {
                 alt="Namensschild"
               />
             )}
-            <StampsImageOverlay stamps={stampsState} />
           </div>
         </div>
-        <div className="bg-white rounded-xl p-5">
+        <div className="p-5 bg-white rounded-xl">
           <Heading text="Grundfarbe" />
           <BaseColorList onClick={onColorSelect} baseColor={colorState} />
           <Heading text="Stempel" />

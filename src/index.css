@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.perspective-container {
+  top: 135px;
+  left: 80px;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+}
+
+.perspective {
+  transform: rotateX(-16deg) rotateY(23deg);
+  /* perspective-origin: left; */
+  height: 290px;
+  width: 250px;
+}
+
+.custom-stamp {
+  position: absolute;
+  height: 75px;
+  width: 75px;
+}
+
+.custom-stamp.top-row {
+  top: 30px;
+}
+
+.custom-stamp.middle-row {
+  top: 115px;
+}
+
+.custom-stamp.bottom-row {
+  top: 201px;
+}
+
+.custom-stamp.left {
+  left: 8px;
+}
+
+.custom-stamp.center {
+  left: 86px;
+}
+
+.custom-stamp.right {
+  left: 165px;
+}
