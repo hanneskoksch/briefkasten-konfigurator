@@ -6,6 +6,7 @@ import baseGreen from "../img/base-green.png";
 import { BaseColor } from "./enums";
 import stamp1 from "../img/stamp-1.png";
 import stamp2 from "../img/stamp-2.png";
+import stamp3 from "../img/stamp-3.png";
 
 export const stampsDatabase: Stamp[] = [
   {
@@ -15,6 +16,10 @@ export const stampsDatabase: Stamp[] = [
   {
     name: "Blatt 1",
     image: stamp2,
+  },
+  {
+    name: "Blüte 1",
+    image: stamp3,
   },
 ];
 
