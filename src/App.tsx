@@ -98,6 +98,8 @@ function App() {
         <div className="p-5 bg-white rounded-xl">
           <Heading text="Grundfarbe" />
           <BaseColorList onClick={onColorSelect} baseColor={colorState} />
+          <Heading text="Namensschild" />
+          <Checkbox checked={nameFieldState} setChecked={onToggleNameField} />
           <Heading text="Stempel" />
           <StampSelectorBoxes onClick={onAddStampList} />
           <StampList
@@ -105,8 +107,6 @@ function App() {
             onRemove={onRemoveStampList}
             onPositionChange={moveStampToNewPosition}
           />
-          <Heading text="Namensschild" />
-          <Checkbox checked={nameFieldState} setChecked={onToggleNameField} />
         </div>
       </div>
       <BetaVersionLabel />
