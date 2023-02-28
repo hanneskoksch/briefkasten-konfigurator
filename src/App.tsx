@@ -72,7 +72,7 @@ function App() {
     return baseDatabase.find((e) => e.enum === colorState)?.image!;
   }
 
-  if (window.innerWidth < 550) return <UserLargerScreenNote />;
+  if (window.document.body.scrollWidth < 550) return <UserLargerScreenNote />;
 
   return (
     <div className="h-screen">
