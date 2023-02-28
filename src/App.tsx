@@ -17,6 +17,7 @@ import { changeColor } from "./slices/colorSlice";
 import { toggleNameField } from "./slices/nameFieldSlice";
 import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
+import UserLargerScreenNote from "./components/use_larger_screen_note";
 
 function App() {
   const dispatch = useDispatch();
@@ -70,6 +71,8 @@ function App() {
   function getBase(): string {
     return baseDatabase.find((e) => e.enum === colorState)?.image!;
   }
+
+  if (window.innerWidth < 550) return <UserLargerScreenNote />;
 
   return (
     <div className="h-screen">
