@@ -18,45 +18,50 @@
 /* Stamp perspective 
    see https://www.cssportal.com/css-3d-transform-generator/ */
 .perspective-container {
-  top: 135px;
-  left: 80px;
+  top: 0;
+  /* left: 80px; */
   perspective: 1000px;
   perspective-origin: 50% 50%;
+  aspect-ratio: 378/462;
+  height: 100%;
+  width: 100%;
 }
 
 .perspective {
   transform: rotateX(-16deg) rotateY(23deg);
   /* perspective-origin: left; */
-  height: 290px;
-  width: 250px;
+  /* height: 290px; */
+  /* width: 250px; */
+  height: 100%;
+  width: 100%;
 }
 
 .custom-stamp {
   position: absolute;
-  height: 75px;
-  width: 75px;
+  height: 17%;
+  width: 17%;
 }
 
 .custom-stamp.top-row {
-  top: 30px;
+  top: 37%;
 }
 
 .custom-stamp.middle-row {
-  top: 115px;
+  top: 55%;
 }
 
 .custom-stamp.bottom-row {
-  top: 201px;
+  top: 73%;
 }
 
 .custom-stamp.left {
-  left: 8px;
+  left: 27%;
 }
 
 .custom-stamp.center {
-  left: 86px;
+  left: 45.5%;
 }
 
 .custom-stamp.right {
-  left: 165px;
+  left: 64%;
 }
