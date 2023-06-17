@@ -12,9 +12,9 @@ import {
   addStamp,
   changeStampPosition,
   removeStamp,
-} from "./slices/stampSlice";
-import { changeColor } from "./slices/colorSlice";
-import { toggleNameField } from "./slices/nameFieldSlice";
+} from "./slices/configurationSlice";
+import { changeColor } from "./slices/configurationSlice";
+import { toggleNameField } from "./slices/configurationSlice";
 import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
 
@@ -22,10 +22,10 @@ function App() {
   const dispatch = useDispatch();
 
   // State
-  const stampsState = useSelector((state: RootState) => state.stamps.value);
-  const colorState = useSelector((state: RootState) => state.color.value);
+  const stampsState = useSelector((state: RootState) => state.configuration.stamps);
+  const colorState = useSelector((state: RootState) => state.configuration.baseColor);
   const nameFieldState = useSelector(
-    (state: RootState) => state.namefield.value
+    (state: RootState) => state.configuration.nameField
   );
 
   /**
