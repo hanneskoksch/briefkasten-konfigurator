@@ -12,6 +12,7 @@ import {
   addStamp,
   changeStampPosition,
   removeStamp,
+  resetConfiguration,
 } from "./slices/configurationSlice";
 import { changeColor } from "./slices/configurationSlice";
 import { toggleNameField } from "./slices/configurationSlice";
@@ -22,11 +23,22 @@ function App() {
   const dispatch = useDispatch();
 
   // State
-  const stampsState = useSelector((state: RootState) => state.configuration.stamps);
-  const colorState = useSelector((state: RootState) => state.configuration.baseColor);
+  const stampsState = useSelector(
+    (state: RootState) => state.configuration.stamps
+  );
+  const colorState = useSelector(
+    (state: RootState) => state.configuration.baseColor
+  );
   const nameFieldState = useSelector(
     (state: RootState) => state.configuration.nameField
   );
+
+  /**
+   * Resets the configuration to the default values.
+   */
+  function onResetConfiguration() {
+    dispatch(resetConfiguration());
+  }
 
   /**
    * Toggles the name field state.
@@ -107,6 +119,7 @@ function App() {
             onRemove={onRemoveStampList}
             onPositionChange={moveStampToNewPosition}
           />
+          {/* <button onClick={onResetConfiguration}>reset</button> */}
         </div>
       </div>
       <BetaVersionLabel />

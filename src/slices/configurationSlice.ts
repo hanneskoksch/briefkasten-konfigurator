@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { BaseColor } from "../utils/enums";
 import { Stamp } from "../model/image_data_models";
+import { stat } from "fs";
 
 interface ConfigurationSlice {
   baseColor: BaseColor;
@@ -18,6 +19,11 @@ export const configurationSlice = createSlice({
   name: "configuration",
   initialState,
   reducers: {
+    resetConfiguration: (state) => {
+      state.baseColor = initialState.baseColor;
+      state.nameField = initialState.nameField;
+      state.stamps = initialState.stamps;
+    },
     changeColor: (state, action: PayloadAction<BaseColor>) => {
       state.baseColor = action.payload;
     },
@@ -61,6 +67,13 @@ export const configurationSlice = createSlice({
   },
 });
 
-export const { changeColor, toggleNameField, addStamp, removeStamp, changeStampPosition } = configurationSlice.actions;
+export const {
+  resetConfiguration,
+  changeColor,
+  toggleNameField,
+  addStamp,
+  removeStamp,
+  changeStampPosition,
+} = configurationSlice.actions;
 
 export default configurationSlice.reducer;
