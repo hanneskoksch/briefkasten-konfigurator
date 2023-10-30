@@ -17,6 +17,7 @@ import { changeColor } from "./slices/colorSlice";
 import { toggleNameField } from "./slices/nameFieldSlice";
 import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const dispatch = useDispatch();
@@ -110,6 +111,7 @@ function App() {
         </div>
       </div>
       <BetaVersionLabel />
+      <Analytics />
     </div>
   );
 }
