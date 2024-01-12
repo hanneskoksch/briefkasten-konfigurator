@@ -1,12 +1,12 @@
-import { Stamp, Base, Color } from "../model/image_data_models";
 import baseBlue from "../img/base-blue.png";
-import baseWhite from "../img/base-white.png";
-import baseGrey from "../img/base-grey.png";
 import baseGreen from "../img/base-green.png";
-import { BaseColor } from "./enums";
+import baseGrey from "../img/base-grey.png";
+import baseWhite from "../img/base-white.png";
 import stamp1 from "../img/stamp-1.png";
 import stamp2 from "../img/stamp-2.png";
 import stamp3 from "../img/stamp-3.png";
+import { Base, Color, Stamp } from "../model/image_data_models";
+import { BaseColor } from "./enums";
 
 export const stampsDatabase: Stamp[] = [
   {

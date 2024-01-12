@@ -1,22 +1,22 @@
-import Heading from "./components/configurator/heading";
-import Checkbox from "./components/configurator/checkbox";
-import { baseDatabase, stampsDatabase } from "./utils/stamps_database";
-import StampList from "./components/configurator/stamp_list";
-import StampsImageOverlay from "./components/image/stamps_image_overlay";
-import BaseColorList from "./components/configurator/base_color_list";
-import { BaseColor } from "./utils/enums";
-import NameField from "./img/nametag.png";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./store";
+import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
+import BaseColorList from "./components/configurator/base_color_list";
+import Checkbox from "./components/configurator/checkbox";
+import Heading from "./components/configurator/heading";
+import StampList from "./components/configurator/stamp_list";
+import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
+import StampsImageOverlay from "./components/image/stamps_image_overlay";
+import NameField from "./img/nametag.png";
+import { changeColor } from "./slices/colorSlice";
+import { toggleNameField } from "./slices/nameFieldSlice";
 import {
   addStamp,
   changeStampPosition,
   removeStamp,
 } from "./slices/stampSlice";
-import { changeColor } from "./slices/colorSlice";
-import { toggleNameField } from "./slices/nameFieldSlice";
-import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
-import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
+import { RootState } from "./store";
+import { BaseColor } from "./utils/enums";
+import { baseDatabase, stampsDatabase } from "./utils/stamps_database";
 
 function App() {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { BaseColor } from "../../utils/enums";
-import BaseColorThumbnail from "./base_color_thumbnail";
 import { baseDatabase } from "../../utils/stamps_database";
+import BaseColorThumbnail from "./base_color_thumbnail";
 
 interface BaseColorListProps {
   onClick: Function;

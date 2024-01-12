@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import stampReducer from "./slices/stampSlice";
 import colorReducer from "./slices/colorSlice";
 import nameFieldReducer from "./slices/nameFieldSlice";
+import stampReducer from "./slices/stampSlice";
 
 export const store = configureStore({
   reducer: {
