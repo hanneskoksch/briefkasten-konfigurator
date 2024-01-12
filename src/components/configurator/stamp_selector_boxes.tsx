@@ -9,7 +9,7 @@ const StampSelectorBoxes = ({ onClick }: StampSelectorBoxesProps) => {
     <div className="flex justify-center">
       {stampsDatabase.map((stamp, i) => (
         <div
-          className="h-10 w-10 m-2 p-2 bg-gray-200 hover:bg-green-200 font-bold rounded flex justify-center items-center cursor-pointer "
+          className="m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded bg-gray-200 p-2 font-bold hover:bg-green-200 "
           onClick={() => onClick(i)}
           key={i}
         >

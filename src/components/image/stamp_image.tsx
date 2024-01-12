@@ -32,7 +32,7 @@ const StampImage = ({ stamp }: StampImageProps) => {
 
   return (
     <img
-      className={`relative custom-stamp top-row left ${getStampPosition()}`}
+      className={`custom-stamp top-row left relative ${getStampPosition()}`}
       src={stamp.image}
       alt="Stempel"
     />

@@ -74,28 +74,28 @@ function App() {
   return (
     <div className="h-screen">
       <div className="flex flex-wrap">
-        <div className="bg-white rounded-xl">
+        <div className="rounded-xl bg-white">
           <div className="relative">
             <img
-              className="relative top-0 left-0"
+              className="relative left-0 top-0"
               src={getBase()}
               alt="Briefkasten"
             />
-            <div className="absolute perspective-container">
+            <div className="perspective-container absolute">
               <div className=" perspective">
                 <StampsImageOverlay stamps={stampsState} />
               </div>
             </div>
             {nameFieldState && (
               <img
-                className="absolute top-0 left-0"
+                className="absolute left-0 top-0"
                 src={NameField}
                 alt="Namensschild"
               />
             )}
           </div>
         </div>
-        <div className="p-5 bg-white rounded-xl">
+        <div className="rounded-xl bg-white p-5">
           <Heading text="Grundfarbe" />
           <BaseColorList onClick={onColorSelect} baseColor={colorState} />
           <Heading text="Namensschild" />
