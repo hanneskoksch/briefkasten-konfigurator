@@ -1,19 +1,15 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       backgroundImage: {
-        'glazeblue': "url('./img/color-blue.png')",
-        'glazewhite': "url('./img/color-white.png')",
-        'glazegrey': "url('./img/color-grey.png')",
-        'glazegreen': "url('./img/color-green.png')",
-       }
+        glazeblue: "url('./img/color-blue.png')",
+        glazewhite: "url('./img/color-white.png')",
+        glazegrey: "url('./img/color-grey.png')",
+        glazegreen: "url('./img/color-green.png')",
+      },
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [],
-}
+};
