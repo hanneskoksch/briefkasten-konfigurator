@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface PositionBlockProps  {
     position: number,
     onChangePosition: Function,

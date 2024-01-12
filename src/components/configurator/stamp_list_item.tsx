@@ -1,4 +1,3 @@
-import React from "react";
 import { Stamp } from "../../model/image_data_models";
 import PositionBlock from "./position_block";
 import RemoveStampBox from "./remove_stamp_box";

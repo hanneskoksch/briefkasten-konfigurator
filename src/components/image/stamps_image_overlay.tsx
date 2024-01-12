@@ -1,4 +1,3 @@
-import React from "react";
 import { Stamp } from "../../model/image_data_models";
 import StampImage from "./stamp_image";
 

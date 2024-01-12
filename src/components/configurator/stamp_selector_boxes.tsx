@@ -1,4 +1,3 @@
-import React from "react";
 import { stampsDatabase } from "../../utils/stamps_database";
 
 interface StampSelectorBoxesProps {

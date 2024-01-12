@@ -1,4 +1,3 @@
-import React from "react";
 import { BaseColor } from "../../utils/enums";
 
 interface ColorThumbnailProps {
