@@ -10,7 +10,7 @@ dependencies:
     version: 2.0.1(react-redux@9.0.4)(react@18.2.0)
   prettier-plugin-tailwindcss:
     specifier: ^0.5.11
-    version: 0.5.11(prettier@3.1.1)
+    version: 0.5.11(prettier-plugin-organize-imports@3.2.4)(prettier@3.1.1)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -58,6 +58,9 @@ devDependencies:
   prettier:
     specifier: 3.1.1
     version: 3.1.1
+  prettier-plugin-organize-imports:
+    specifier: ^3.2.4
+    version: 3.2.4(prettier@3.1.1)(typescript@5.3.3)
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
@@ -1826,7 +1829,23 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-tailwindcss@0.5.11(prettier@3.1.1):
+  /prettier-plugin-organize-imports@3.2.4(prettier@3.1.1)(typescript@5.3.3):
+    resolution: {integrity: sha512-6m8WBhIp0dfwu0SkgfOxJqh+HpdyfqSSLfKKRZSFbDuEQXDDndb8fTpRWkUrX/uBenkex3MgnVk0J3b3Y5byog==}
+    peerDependencies:
+      '@volar/vue-language-plugin-pug': ^1.0.4
+      '@volar/vue-typescript': ^1.0.4
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+    peerDependenciesMeta:
+      '@volar/vue-language-plugin-pug':
+        optional: true
+      '@volar/vue-typescript':
+        optional: true
+    dependencies:
+      prettier: 3.1.1
+      typescript: 5.3.3
+
+  /prettier-plugin-tailwindcss@0.5.11(prettier-plugin-organize-imports@3.2.4)(prettier@3.1.1):
     resolution: {integrity: sha512-AvI/DNyMctyyxGOjyePgi/gqj5hJYClZ1avtQvLlqMT3uDZkRbi4HhGUpok3DRzv9z7Lti85Kdj3s3/1CeNI0w==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
@@ -1876,6 +1895,7 @@ packages:
         optional: true
     dependencies:
       prettier: 3.1.1
+      prettier-plugin-organize-imports: 3.2.4(prettier@3.1.1)(typescript@5.3.3)
     dev: false
 
   /prettier@3.1.1:
@@ -2211,7 +2231,6 @@ packages:
     resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: true
 
   /update-browserslist-db@1.0.13(browserslist@4.22.2):
     resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}
