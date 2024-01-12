@@ -25,7 +25,7 @@ function App() {
   const stampsState = useSelector((state: RootState) => state.stamps.value);
   const colorState = useSelector((state: RootState) => state.color.value);
   const nameFieldState = useSelector(
-    (state: RootState) => state.namefield.value
+    (state: RootState) => state.namefield.value,
   );
 
   /**

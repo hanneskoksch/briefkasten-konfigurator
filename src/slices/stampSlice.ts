@@ -34,15 +34,15 @@ export const stampSlice = createSlice({
     },
     changeStampPosition: (
       state,
-      action: PayloadAction<{ oldPosition: number; newPosition: number }>
+      action: PayloadAction<{ oldPosition: number; newPosition: number }>,
     ) => {
       if (
         state.value.filter(
-          (stamp) => stamp.position === action.payload.newPosition
+          (stamp) => stamp.position === action.payload.newPosition,
         ).length === 0
       ) {
         const index = state.value.findIndex(
-          (stamp) => stamp.position === action.payload.oldPosition
+          (stamp) => stamp.position === action.payload.oldPosition,
         );
         state.value[index].position = action.payload.newPosition;
       }
