@@ -68,7 +68,11 @@ function App() {
   }
 
   function getBase(): string {
-    return baseDatabase.find((e) => e.enum === colorState)?.image!;
+    return (
+      baseDatabase.find((base) => base.enum === colorState)?.image ??
+      // return the first element if no base is not found
+      baseDatabase[0].image
+    );
   }
 
   return (
