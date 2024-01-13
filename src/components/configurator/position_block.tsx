@@ -1,6 +1,6 @@
 interface PositionBlockProps {
   position: number;
-  onChangePosition: Function;
+  onChangePosition: (oldPosition: number, newPosition: number) => void;
 }
 
 const PositionBlock = ({ position, onChangePosition }: PositionBlockProps) => {

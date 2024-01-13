@@ -63,7 +63,10 @@ function App() {
    * @param oldPosition The old position on the letterbox (number from 0 - 8)
    * @param newPosition The new position on the letterbox (number from 0 - 8)
    */
-  function moveStampToNewPosition(oldPosition: number, newPosition: number) {
+  function moveStampToNewPosition(
+    oldPosition: number,
+    newPosition: number,
+  ): void {
     dispatch(changeStampPosition({ oldPosition, newPosition }));
   }
 

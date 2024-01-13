@@ -4,8 +4,8 @@ import StampListItem from "./stamp_list_item";
 interface StampListProps {
   stamps: Stamp[];
   //stamps: (Stamp | null)[];
-  onRemove: Function;
-  onPositionChange: Function;
+  onRemove: (index: number) => void;
+  onPositionChange: (oldPosition: number, newPosition: number) => void;
 }
 
 const StampList = ({ stamps, onRemove, onPositionChange }: StampListProps) => {

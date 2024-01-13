@@ -3,7 +3,7 @@ import { baseDatabase } from "../../utils/stamps_database";
 import BaseColorThumbnail from "./base_color_thumbnail";
 
 interface BaseColorListProps {
-  onClick: Function;
+  onClick: (color: BaseColor) => void;
   baseColor: BaseColor;
 }
 

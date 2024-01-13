@@ -2,7 +2,7 @@ import { FaCheck } from "react-icons/fa";
 
 interface CheckboxProps {
   checked: boolean;
-  setChecked: Function;
+  setChecked: (isActive: boolean) => void;
 }
 
 const Checkbox = ({ checked, setChecked }: CheckboxProps) => {

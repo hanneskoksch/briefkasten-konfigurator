@@ -3,7 +3,7 @@ import { BaseColor } from "../../utils/enums";
 interface ColorThumbnailProps {
   colorClass: BaseColor;
   baseColor: BaseColor;
-  onClick: Function;
+  onClick: (color: BaseColor) => void;
 }
 
 const BaseColorThumbnail = ({

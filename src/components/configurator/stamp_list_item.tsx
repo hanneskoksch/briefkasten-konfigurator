@@ -5,8 +5,8 @@ import RemoveStampBox from "./remove_stamp_box";
 interface StampListItemProps {
   stamp: Stamp;
   index: number;
-  onRemove: Function;
-  onPositionChange: Function;
+  onRemove: (index: number) => void;
+  onPositionChange: (oldPosition: number, newPosition: number) => void;
 }
 
 const StampListItem = ({

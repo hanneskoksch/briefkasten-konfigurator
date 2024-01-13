@@ -1,7 +1,7 @@
 import { stampsDatabase } from "../../utils/stamps_database";
 
 interface StampSelectorBoxesProps {
-  onClick: Function;
+  onClick: (index: number) => void;
 }
 
 const StampSelectorBoxes = ({ onClick }: StampSelectorBoxesProps) => {
