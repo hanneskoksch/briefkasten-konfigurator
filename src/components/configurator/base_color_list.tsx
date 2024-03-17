@@ -16,6 +16,7 @@ const BaseColorList = ({ onClick, baseColor }: BaseColorListProps) => {
           onClick={onClick}
           baseColor={baseColor}
           colorClass={base.enum!}
+          name={base.name}
         />
       ))}
     </div>
