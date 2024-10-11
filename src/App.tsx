@@ -1,28 +1,31 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
 import BaseColorList from "./components/configurator/base_color_list";
 import Checkbox from "./components/configurator/checkbox";
 import Heading from "./components/configurator/heading";
-import StampList from "./components/configurator/stamp_list";
 import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
 import NameField from "./img/nametag.png";
 import { changeColor } from "./slices/colorSlice";
-import { toggleNameField } from "./slices/nameFieldSlice";
 import {
   addStamp,
-  changeStampPosition,
   removeStamp,
-} from "./slices/stampSlice";
+  setStampPositions,
+} from "./slices/configurationSlice";
+import { toggleNameField } from "./slices/nameFieldSlice";
 import { RootState } from "./store";
 import { BaseColor } from "./utils/enums";
 import { baseDatabase, stampsDatabase } from "./utils/stamps_database";
 
 function App() {
   const dispatch = useDispatch();
+  const [resetSwapyTrigger, setResetSwapyTrigger] = useState(false);
 
   // State
-  const stampsState = useSelector((state: RootState) => state.stamps.value);
+  const configurationState = useSelector(
+    (state: RootState) => state.configuration,
+  );
   const colorState = useSelector((state: RootState) => state.color.value);
   const nameFieldState = useSelector(
     (state: RootState) => state.namefield.value,
@@ -36,19 +39,14 @@ function App() {
     dispatch(toggleNameField(isActive));
   }
 
-  /**
-   * A new regular stamp gets added.
-   */
   function onAddStampList(index: number): void {
     dispatch(addStamp(stampsDatabase[index]));
+    setResetSwapyTrigger((val) => !val);
   }
 
-  /**
-   * A regular stamp gets removed.
-   * @param index The index of the element which gets removed.
-   */
-  function onRemoveStampList(index: number): void {
-    dispatch(removeStamp(index));
+  function onRemoveStampList(entry: string): void {
+    dispatch(removeStamp(entry));
+    setResetSwapyTrigger((val) => !val);
   }
 
   /**
@@ -58,16 +56,8 @@ function App() {
     dispatch(changeColor(color));
   }
 
-  /**
-   * Changes position of the stamp on the letterbox.
-   * @param oldPosition The old position on the letterbox (number from 0 - 8)
-   * @param newPosition The new position on the letterbox (number from 0 - 8)
-   */
-  function moveStampToNewPosition(
-    oldPosition: number,
-    newPosition: number,
-  ): void {
-    dispatch(changeStampPosition({ oldPosition, newPosition }));
+  function onSwap(stampPositions: { [key: number]: string | null }): void {
+    dispatch(setStampPositions(stampPositions));
   }
 
   function getBase(): string {
@@ -90,7 +80,12 @@ function App() {
             />
             <div className="perspective-container absolute">
               <div className=" perspective">
-                <StampsImageOverlay stamps={stampsState} />
+                <StampsImageOverlay
+                  initialStamps={configurationState.stamps}
+                  onPositionChange={onSwap}
+                  onRemoveStamp={onRemoveStampList}
+                  resetTrigger={resetSwapyTrigger}
+                />
               </div>
             </div>
             {nameFieldState && (
@@ -109,11 +104,6 @@ function App() {
           <Checkbox checked={nameFieldState} setChecked={onToggleNameField} />
           <Heading text="Stempel" />
           <StampSelectorBoxes onClick={onAddStampList} />
-          <StampList
-            stamps={stampsState}
-            onRemove={onRemoveStampList}
-            onPositionChange={moveStampToNewPosition}
-          />
         </div>
       </div>
       <BetaVersionLabel />

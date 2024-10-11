@@ -2,40 +2,20 @@ import { Stamp } from "../../model/image_data_models";
 
 interface StampImageProps {
   stamp: Stamp;
+  onDelete: () => void;
 }
 
-const StampImage = ({ stamp }: StampImageProps) => {
-  const getStampPosition = () => {
-    switch (stamp.position) {
-      case 0:
-        return "top-row left";
-      case 1:
-        return "top-row center";
-      case 2:
-        return "top-row right";
-      case 3:
-        return "middle-row left";
-      case 4:
-        return "middle-row center";
-      case 5:
-        return "middle-row right";
-      case 6:
-        return "bottom-row left";
-      case 7:
-        return "bottom-row center";
-      case 8:
-        return "bottom-row right";
-      default:
-        return "top-row left";
-    }
-  };
-
+const StampImage = ({ stamp, onDelete }: StampImageProps) => {
   return (
-    <img
-      className={`custom-stamp top-row left relative ${getStampPosition()}`}
-      src={stamp.image}
-      alt="Stempel"
-    />
+    <div>
+      <img className="pointer-events-none" src={stamp.image} alt="Stempel" />
+      {/* <button
+        onClick={() => onDelete()}
+        className="absolute right-0 top-0 h-6 w-6 rounded-full bg-red-600"
+      >
+        <p className="text-sm">X</p>
+      </button> */}
+    </div>
   );
 };
 
