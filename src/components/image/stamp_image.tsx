@@ -5,7 +5,7 @@ interface StampImageProps {
   onDelete: () => void;
 }
 
-const StampImage = ({ stamp, onDelete }: StampImageProps) => {
+const StampImage = ({ stamp }: StampImageProps) => {
   return (
     <div>
       <img className="pointer-events-none" src={stamp.image} alt="Stempel" />
