@@ -85,7 +85,7 @@
 }
 
 /* All slot elements when dragging, not yet supported by swapy  */
-[data-non-higlighted]::after {
+[data-swapy-non-highlighted]::after {
   content: "";
   position: absolute;
   top: 0;
@@ -105,5 +105,5 @@
   left: 0;
   border: 5px dashed #ffffffa6 !important;
   border-radius: 5px;
-  background-color: #ffffff2a;
+  background-color: #ffffff41;
 }
