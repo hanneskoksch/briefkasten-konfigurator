@@ -1,11 +1,13 @@
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
-import BaseColorList from "./components/configurator/base_color_list";
 import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
 import NameField from "./img/nametag.png";
+import { Base } from "./model/image_data_models";
 import { changeColor } from "./slices/colorSlice";
 import {
   addStamp,
@@ -52,6 +54,7 @@ function App() {
    * A different letterbox color gets selected.
    */
   function onColorSelect(color: BaseColor): void {
+    console.log(color);
     dispatch(changeColor(color));
   }
 
@@ -96,9 +99,35 @@ function App() {
             )}
           </div>
         </div>
+
         <div className="m-5">
-          <h3 className="font-semibold">Grundfarbe</h3>
-          <BaseColorList onClick={onColorSelect} baseColor={colorState} />
+          <div className="space-y-2">
+            <h3 className="font-semibold">Grundfarbe</h3>
+            <RadioGroup
+              defaultValue={colorState}
+              onValueChange={(newValue) => onColorSelect(newValue as BaseColor)}
+              value={colorState}
+            >
+              <div className="flex flex-row items-center space-x-3">
+                {baseDatabase.map((base: Base) => (
+                  <div className="flex flex-col space-y-2" key={base.name}>
+                    <RadioGroupItem
+                      value={base.enum}
+                      id={base.enum}
+                      className={base.enum}
+                    />
+                    <Label
+                      htmlFor={base.enum}
+                      className="text-center font-normal"
+                    >
+                      {base.name}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </RadioGroup>
+          </div>
+
           <div className="flex flex-row items-center justify-between py-8">
             <div className="space-y-0.5">
               <h3 className="font-semibold">Adressfeld</h3>
@@ -114,15 +143,16 @@ function App() {
               />
             </div>
           </div>
-          <div className="5 space-y-0">
+
+          <div className="space-y-0.5">
             <h3 className="font-semibold">Stempel</h3>
             <p className="text-xs text-gray-500">
               Wählen Sie aus verschiedenen Stempeln, um Ihren Briefkasten zu
               personalisieren, und ziehen Sie diese dann an die gewünschte
               Stelle.
             </p>
+            <StampSelectorBoxes onClick={onAddStampList} />
           </div>
-          <StampSelectorBoxes onClick={onAddStampList} />
         </div>
       </div>
       <BetaVersionLabel />
