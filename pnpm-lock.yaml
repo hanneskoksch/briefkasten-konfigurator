@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  swapy@0.4.1:
+    hash: f62ivtavzvn44fg2v4glo36jca
+    path: patches/swapy@0.4.1.patch
+
 importers:
 
   .:
@@ -25,7 +30,7 @@ importers:
         version: 9.1.0(@types/react@18.2.66)(react@18.2.0)(redux@5.0.1)
       swapy:
         specifier: ^0.4.1
-        version: 0.4.1
+        version: 0.4.1(patch_hash=f62ivtavzvn44fg2v4glo36jca)
     devDependencies:
       '@types/react':
         specifier: ^18.2.66
@@ -2506,7 +2511,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  swapy@0.4.1: {}
+  swapy@0.4.1(patch_hash=f62ivtavzvn44fg2v4glo36jca): {}
 
   tailwindcss@3.4.1:
     dependencies:
