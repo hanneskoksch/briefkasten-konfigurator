@@ -16,8 +16,8 @@ const BaseColorThumbnail = ({
   return (
     <div className="text-center">
       <div
-        className={`duration-50 m-1 h-16 w-16 cursor-pointer rounded-full bg-center transition ease-in-out hover:scale-105 ${colorClass} ${
-          baseColor === colorClass && "border-4 border-gray-800"
+        className={`duration-50 m-1 h-12 w-12 cursor-pointer rounded-full bg-center transition ease-in-out hover:scale-105 ${colorClass} ${
+          baseColor === colorClass && "border-[3px] border-gray-800"
         }`}
         onClick={() => onClick(colorClass)}
       ></div>

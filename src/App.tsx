@@ -3,8 +3,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
 import BaseColorList from "./components/configurator/base_color_list";
-import Checkbox from "./components/configurator/checkbox";
-import Heading from "./components/configurator/heading";
 import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
 import NameField from "./img/nametag.png";
@@ -98,17 +96,32 @@ function App() {
             )}
           </div>
         </div>
-        <div className="rounded-xl bg-white p-5">
-          <Heading text="Grundfarbe" />
+        <div className="m-5">
+          <h3 className="font-semibold">Grundfarbe</h3>
           <BaseColorList onClick={onColorSelect} baseColor={colorState} />
-          <Heading text="Namensschild" />
-          <div className="text-center">
-            <Switch
-              checked={nameFieldState}
-              onCheckedChange={() => onToggleNameField(!nameFieldState)}
-            />
+          <div className="flex flex-row items-center justify-between py-8">
+            <div className="space-y-0.5">
+              <h3 className="font-semibold">Adressfeld</h3>
+              <p className="text-xs text-gray-500">
+                Lassen Sie ein Feld frei, um Ihren Namen auf den Briefkasten zu
+                schreiben.
+              </p>
+            </div>
+            <div className="px-4">
+              <Switch
+                checked={nameFieldState}
+                onCheckedChange={() => onToggleNameField(!nameFieldState)}
+              />
+            </div>
           </div>
-          <Heading text="Stempel" />
+          <div className="5 space-y-0">
+            <h3 className="font-semibold">Stempel</h3>
+            <p className="text-xs text-gray-500">
+              Wählen Sie aus verschiedenen Stempeln, um Ihren Briefkasten zu
+              personalisieren, und ziehen Sie diese dann an die gewünschte
+              Stelle.
+            </p>
+          </div>
           <StampSelectorBoxes onClick={onAddStampList} />
         </div>
       </div>

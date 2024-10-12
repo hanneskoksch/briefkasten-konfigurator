@@ -6,7 +6,7 @@ interface StampSelectorBoxesProps {
 
 const StampSelectorBoxes = ({ onClick }: StampSelectorBoxesProps) => {
   return (
-    <div className="flex justify-center">
+    <div className="flex ">
       {stampsDatabase.map((stamp, i) => (
         <div
           className="m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded bg-gray-200 p-2 font-bold hover:bg-green-200 "
