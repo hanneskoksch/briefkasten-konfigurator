@@ -1,3 +1,4 @@
+import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
@@ -101,7 +102,12 @@ function App() {
           <Heading text="Grundfarbe" />
           <BaseColorList onClick={onColorSelect} baseColor={colorState} />
           <Heading text="Namensschild" />
-          <Checkbox checked={nameFieldState} setChecked={onToggleNameField} />
+          <div className="text-center">
+            <Switch
+              checked={nameFieldState}
+              onCheckedChange={() => onToggleNameField(!nameFieldState)}
+            />
+          </div>
           <Heading text="Stempel" />
           <StampSelectorBoxes onClick={onAddStampList} />
         </div>
