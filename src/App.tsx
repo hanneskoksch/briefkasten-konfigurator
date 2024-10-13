@@ -100,7 +100,7 @@ function App() {
           </div>
         </div>
 
-        <div className="m-5">
+        <div className="m-5 max-w-[400px]">
           <div className="space-y-2">
             <h3 className="font-semibold">Grundfarbe</h3>
             <RadioGroup
