@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { stampsDatabase } from "../../utils/stamps_database";
 
 interface StampSelectorBoxesProps {
@@ -6,15 +7,17 @@ interface StampSelectorBoxesProps {
 
 const StampSelectorBoxes = ({ onClick }: StampSelectorBoxesProps) => {
   return (
-    <div className="flex ">
+    <div className="flex space-x-3 pt-2">
       {stampsDatabase.map((stamp, i) => (
-        <div
-          className="m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded bg-gray-200 p-2 font-bold hover:bg-green-200 "
-          onClick={() => onClick(i)}
+        <Button
+          variant="secondary"
+          size="icon"
           key={i}
+          onClick={() => onClick(i)}
+          className="size-12 p-2"
         >
           <img src={stamp.image} alt="Stempel" />
-        </div>
+        </Button>
       ))}
     </div>
   );
