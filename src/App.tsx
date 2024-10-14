@@ -1,20 +1,24 @@
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
+import { ResetIcon, ShuffleIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
 import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
+import { Button } from "./components/ui/button";
 import NameField from "./img/nametag.png";
 import { Base } from "./model/image_data_models";
-import { changeColor } from "./slices/colorSlice";
 import {
   addStamp,
+  changeBaseColor,
+  randomConfiguration,
   removeStamp,
+  resetConfiguration,
   setStampPositions,
+  toggleNameField,
 } from "./slices/configurationSlice";
-import { toggleNameField } from "./slices/nameFieldSlice";
 import { RootState } from "./store";
 import { BaseColor } from "./utils/enums";
 import { baseDatabase, stampsDatabase } from "./utils/stamps_database";
@@ -27,9 +31,11 @@ function App() {
   const configurationState = useSelector(
     (state: RootState) => state.configuration,
   );
-  const colorState = useSelector((state: RootState) => state.color.value);
+  const colorState = useSelector(
+    (state: RootState) => state.configuration.color,
+  );
   const nameFieldState = useSelector(
-    (state: RootState) => state.namefield.value,
+    (state: RootState) => state.configuration.nameField,
   );
 
   /**
@@ -50,12 +56,23 @@ function App() {
     setResetSwapyTrigger((val) => !val);
   }
 
+  function onResetConfiguration(): void {
+    dispatch(resetConfiguration());
+    setResetSwapyTrigger((val) => !val);
+  }
+
+  function onRandomConfiguration(): void {
+    dispatch(resetConfiguration());
+    dispatch(randomConfiguration());
+    setResetSwapyTrigger((val) => !val);
+  }
+
   /**
    * A different letterbox color gets selected.
    */
   function onColorSelect(color: BaseColor): void {
     console.log(color);
-    dispatch(changeColor(color));
+    dispatch(changeBaseColor(color));
   }
 
   function onSwap(stampPositions: { [key: number]: string | null }): void {
@@ -100,7 +117,7 @@ function App() {
           </div>
         </div>
 
-        <div className="m-5 max-w-[400px]">
+        <div className="m-5 max-w-[400px] space-y-8">
           <div className="space-y-2">
             <h3 className="font-semibold">Grundfarbe</h3>
             <RadioGroup
@@ -128,7 +145,7 @@ function App() {
             </RadioGroup>
           </div>
 
-          <div className="flex flex-row items-center justify-between py-8">
+          <div className="flex flex-row items-center justify-between">
             <div className="space-y-0.5">
               <h3 className="font-semibold">Adressfeld</h3>
               <p className="text-xs text-gray-500">
@@ -152,6 +169,28 @@ function App() {
               Stelle.
             </p>
             <StampSelectorBoxes onClick={onAddStampList} />
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="font-semibold">Konfiguration</h3>
+            <div className="space-x-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onResetConfiguration()}
+              >
+                <ResetIcon className="mr-2 h-3 w-3" />
+                Zurücksetzen
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onRandomConfiguration()}
+              >
+                <ShuffleIcon className="mr-2 h-3 w-3" />
+                Zufällig
+              </Button>
+            </div>
           </div>
         </div>
       </div>

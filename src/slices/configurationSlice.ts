@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { baseDatabase, stampsDatabase } from "@/utils/stamps_database";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Configuration, Stamp } from "../model/image_data_models";
 import { BaseColor } from "../utils/enums";
 
@@ -22,6 +23,10 @@ export const configurationSlice = createSlice({
   name: "configuration",
   initialState,
   reducers: {
+    resetConfiguration: (state: Configuration) => {
+      state = initialState;
+      return state;
+    },
     setStampPositions: (
       state: Configuration,
       action: PayloadAction<Configuration["stamps"]>,
@@ -44,7 +49,7 @@ export const configurationSlice = createSlice({
 
       const newStamp: Stamp = action.payload;
 
-      const id: string = `${newStamp.name}-${new Date().getTime()}`;
+      const id: string = `${newStamp.name}-${new Date().getTime()}-${Math.random()}`;
 
       state.stamps[nextFreePosition] = id;
     },
@@ -59,10 +64,46 @@ export const configurationSlice = createSlice({
       }
       state.stamps = newStamps;
     },
+    toggleNameField: (state: Configuration, action: PayloadAction<boolean>) => {
+      state.nameField = action.payload;
+    },
+    changeBaseColor: (
+      state: Configuration,
+      action: PayloadAction<BaseColor>,
+    ) => {
+      state.color = action.payload;
+    },
+    randomConfiguration: (state: Configuration) => {
+      const randomBase =
+        baseDatabase[Math.floor(Math.random() * baseDatabase.length)];
+
+      state.color = randomBase.enum;
+
+      // iterate over all stamp positions
+      for (let i = 1; i < 10; i++) {
+        const shouldAddStamp = Math.random() > 0.5;
+        if (shouldAddStamp) {
+          // get a random stamp from the database
+          const randomStampIndex = Math.floor(
+            Math.random() * stampsDatabase.length,
+          );
+          const randomStamp = stampsDatabase[randomStampIndex];
+          const id: string = `${randomStamp.name}-${new Date().getTime()}-${Math.random()}`;
+          state.stamps[i] = id;
+        }
+      }
+    },
   },
 });
 
-export const { setStampPositions, addStamp, removeStamp } =
-  configurationSlice.actions;
+export const {
+  resetConfiguration,
+  setStampPositions,
+  addStamp,
+  removeStamp,
+  toggleNameField,
+  changeBaseColor,
+  randomConfiguration,
+} = configurationSlice.actions;
 
 export default configurationSlice.reducer;
