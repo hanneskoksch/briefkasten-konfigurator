@@ -35,10 +35,9 @@
   height: 100%;
   width: 100%;
 }
-
 .container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 5px;
   width: 100%;
   max-width: 500px;
@@ -48,21 +47,18 @@
   padding-right: 52px;
   padding-left: 85px;
   padding-bottom: 40px;
-}
-
-.row {
-  display: flex;
-  gap: 5px;
+  justify-content: flex-start;
 }
 
 .slot {
-  flex: 1;
+  width: calc(33.3333% - 5px); /*  3 slots per row */
+  height: calc(33.3333% - 5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  user-select: none;
   position: relative;
-}
-
-.row {
-  height: 100%;
-  max-height: 500px;
 }
 
 .item {
@@ -71,12 +67,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 40px;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
   position: relative;
+  cursor: pointer;
 }
 
 [data-swapy-highlighted] {

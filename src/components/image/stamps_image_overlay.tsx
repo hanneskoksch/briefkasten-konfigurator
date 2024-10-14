@@ -96,39 +96,15 @@ const StampsImageOverlay = ({
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="slot" data-swapy-slot="1">
-          {getItemByPosition(1)}
+      {[...Array(9)].map((_, i) => (
+        <div
+          key={i + 1}
+          className={`slot ${getItemByPosition(i + 1)}`}
+          data-swapy-slot={i + 1}
+        >
+          {getItemByPosition(i + 1)}
         </div>
-        <div className="slot" data-swapy-slot="2">
-          {getItemByPosition(2)}
-        </div>
-        <div className="slot" data-swapy-slot="3">
-          {getItemByPosition(3)}
-        </div>
-      </div>
-      <div className="row">
-        <div className="slot" data-swapy-slot="4">
-          {getItemByPosition(4)}
-        </div>
-        <div className="slot" data-swapy-slot="5">
-          {getItemByPosition(5)}
-        </div>
-        <div className="slot" data-swapy-slot="6">
-          {getItemByPosition(6)}
-        </div>
-      </div>
-      <div className="row">
-        <div className="slot" data-swapy-slot="7">
-          {getItemByPosition(7)}
-        </div>
-        <div className="slot" data-swapy-slot="8">
-          {getItemByPosition(8)}
-        </div>
-        <div className="slot" data-swapy-slot="9">
-          {getItemByPosition(9)}
-        </div>
-      </div>
+      ))}
     </div>
   );
 };
