@@ -5,6 +5,8 @@ import baseWhite from "../img/base-white.png";
 import stamp1 from "../img/stamp-1.png";
 import stamp2 from "../img/stamp-2.png";
 import stamp3 from "../img/stamp-3.png";
+import stamp4 from "../img/stamp-4.png";
+import stamp5 from "../img/stamp-5.png";
 import { Base, Color, Stamp } from "../model/image_data_models";
 import { BaseColor } from "./enums";
 
@@ -20,6 +22,14 @@ export const stampsDatabase: Stamp[] = [
   {
     name: "Blüte 1",
     image: stamp3,
+  },
+  {
+    name: "Blüte 2",
+    image: stamp4,
+  },
+  {
+    name: "Schnecke 2",
+    image: stamp5,
   },
 ];
 
