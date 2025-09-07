@@ -2,7 +2,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
 import { ResetIcon, ShuffleIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
 import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
@@ -75,9 +75,12 @@ function App() {
     dispatch(changeBaseColor(color));
   }
 
-  function onSwap(stampPositions: { [key: number]: string | null }): void {
-    dispatch(setStampPositions(stampPositions));
-  }
+  const onSwap = useCallback(
+    (stampPositions: { [key: number]: string | null }): void => {
+      dispatch(setStampPositions(stampPositions));
+    },
+    [dispatch]
+  );
 
   function getBase(): string {
     return (

@@ -41,7 +41,7 @@ const StampsImageOverlay = ({
     // Check if there are any stamps in the initialStamps.
     const stampsArray = Object.values(initialStamps);
     setStampsIncludesStamp(stampsArray.some((stamp) => stamp !== null));
-  }, [resetTrigger]);
+  }, [resetTrigger, initialStamps]);
 
   useEffect(() => {
     const container = document.querySelector(".container")!;
@@ -65,7 +65,7 @@ const StampsImageOverlay = ({
     return () => {
       swapyRef.current?.destroy();
     };
-  }, [stampsIncludesStamp]);
+  }, [onPositionChange, stampsIncludesStamp]);
 
   useEffect(() => {
     swapyRef.current?.setData({ object: stamps });
