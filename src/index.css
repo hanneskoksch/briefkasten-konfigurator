@@ -1,103 +1,170 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* Tooltip arrow */
-.arrow-left:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  margin-left: -10px;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent black transparent transparent;
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --background-image-glazeblue: url('./img/color-blue.png');
+  --background-image-glazewhite: url('./img/color-white.png');
+  --background-image-glazegrey: url('./img/color-grey.png');
+  --background-image-glazegreen: url('./img/color-green.png');
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
 }
 
-/* Stamp perspective 
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer utilities {
+  /* Tooltip arrow */
+  .arrow-left:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-left: -10px;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }
+
+  /* Stamp perspective 
    see https://www.cssportal.com/css-3d-transform-generator/ */
-.perspective-container {
-  top: 0;
-  /* left: 80px; */
-  perspective: 1000px;
-  perspective-origin: 50% 50%;
-  aspect-ratio: 378/462;
-  height: 100%;
-  width: 100%;
-}
+  .perspective-container {
+    top: 0;
+    /* left: 80px; */
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+    aspect-ratio: 378/462;
+    height: 100%;
+    width: 100%;
+  }
 
-.perspective {
-  transform: rotateX(-16deg) rotateY(23deg);
-  /* perspective-origin: left; */
-  /* height: 290px; */
-  /* width: 250px; */
-  height: 100%;
-  width: 100%;
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  width: 100%;
-  max-width: 500px;
-  padding: 10px;
-  height: 100%;
-  padding-top: 170px;
-  padding-right: 52px;
-  padding-left: 85px;
-  padding-bottom: 40px;
-  justify-content: flex-start;
-}
+  .perspective {
+    transform: rotateX(-16deg) rotateY(23deg);
+    /* perspective-origin: left; */
+    /* height: 290px; */
+    /* width: 250px; */
+    height: 100%;
+    width: 100%;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    height: 100%;
+    padding-top: 170px;
+    padding-right: 52px;
+    padding-left: 85px;
+    padding-bottom: 40px;
+    justify-content: flex-start;
+  }
 
-.slot {
-  width: calc(33.3333% - 5px); /*  3 slots per row */
-  height: calc(33.3333% - 5px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  user-select: none;
-  position: relative;
-}
+  .slot {
+    width: calc(33.3333% - 5px); /*  3 slots per row */
+    height: calc(33.3333% - 5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    user-select: none;
+    position: relative;
+  }
 
-.item {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  cursor: pointer;
-}
+  .item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+  }
 
-[data-swapy-highlighted] {
-  /* background-color: #ffffff2e; */
-  position: relative;
-}
+  [data-swapy-highlighted] {
+    /* background-color: #ffffff2e; */
+    position: relative;
+  }
 
-/* All slot elements when dragging, not yet supported by swapy  */
-[data-swapy-non-highlighted]::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border: 5px dashed #ffffff2a;
-  border-radius: 5px;
-}
+  /* All slot elements when dragging, not yet supported by swapy  */
+  [data-swapy-non-highlighted]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 5px dashed #ffffff2a;
+    border-radius: 5px;
+  }
 
-[data-swapy-highlighted]::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border: 5px dashed #ffffffa6 !important;
-  border-radius: 5px;
-  background-color: #ffffff41;
+  [data-swapy-highlighted]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 5px dashed #ffffffa6 !important;
+    border-radius: 5px;
+    background-color: #ffffff41;
+  }
 }
 
 @layer base {
