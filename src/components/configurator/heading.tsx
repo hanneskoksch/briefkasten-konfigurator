@@ -4,7 +4,7 @@ interface HeadingProps {
 
 const Heading = ({ text }: HeadingProps) => {
   return (
-    <div className="mb-1 mt-2 text-center text-xl font-bold text-gray-800">
+    <div className="mt-2 mb-1 text-center text-xl font-bold text-gray-800">
       {text}
     </div>
   );

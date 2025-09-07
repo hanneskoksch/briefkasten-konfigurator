@@ -93,12 +93,12 @@ function App() {
         <div className="rounded-xl bg-white">
           <div className="relative">
             <img
-              className="relative left-0 top-0"
+              className="relative top-0 left-0"
               src={getBase()}
               alt="Briefkasten"
             />
             <div className="perspective-container absolute">
-              <div className=" perspective">
+              <div className="perspective">
                 <StampsImageOverlay
                   initialStamps={configurationState.stamps}
                   onPositionChange={onSwap}
@@ -109,7 +109,7 @@ function App() {
             </div>
             {nameFieldState && (
               <img
-                className="absolute left-0 top-0"
+                className="absolute top-0 left-0"
                 src={NameField}
                 alt="Namensschild"
               />

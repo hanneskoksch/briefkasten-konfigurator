@@ -1,14 +1,14 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --background-image-glazeblue: url('./img/color-blue.png');
-  --background-image-glazewhite: url('./img/color-white.png');
-  --background-image-glazegrey: url('./img/color-grey.png');
-  --background-image-glazegreen: url('./img/color-green.png');
+  --background-image-glazeblue: url("./img/color-blue.png");
+  --background-image-glazewhite: url("./img/color-white.png");
+  --background-image-glazegrey: url("./img/color-grey.png");
+  --background-image-glazegreen: url("./img/color-green.png");
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -70,7 +70,7 @@
 @layer utilities {
   /* Tooltip arrow */
   .arrow-left:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 0;
@@ -144,7 +144,7 @@
 
   /* All slot elements when dragging, not yet supported by swapy  */
   [data-swapy-non-highlighted]::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
@@ -155,7 +155,7 @@
   }
 
   [data-swapy-highlighted]::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
