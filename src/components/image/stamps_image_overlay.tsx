@@ -9,6 +9,7 @@ interface StampsImageOverlayProps {
   onPositionChange: (stamps: Configuration["stamps"]) => void;
   onRemoveStamp: (entry: string) => void;
   resetTrigger: boolean;
+  onSelectStamp: (entry: string) => void;
 }
 
 /**
@@ -24,6 +25,7 @@ const StampsImageOverlay = ({
   onPositionChange,
   onRemoveStamp,
   resetTrigger,
+  onSelectStamp,
 }: StampsImageOverlayProps) => {
   // Swapy reference needed when using manual swappping.
   const swapyRef = useRef<Swapy | null>(null);
@@ -83,7 +85,15 @@ const StampsImageOverlay = ({
     }
 
     return (
-      <div className="item" data-swapy-item={`${entry}`} key={`${entry}`}>
+      <div
+        className="item"
+        data-swapy-item={`${entry}`}
+        key={`${entry}`}
+        onClick={() => {
+          onSelectStamp(entry);
+        }}
+        style={{ cursor: "pointer" }}
+      >
         <StampImage
           stamp={stamp}
           onDelete={() => {

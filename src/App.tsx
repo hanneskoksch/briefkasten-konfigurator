@@ -18,6 +18,7 @@ import {
   resetConfiguration,
   setStampPositions,
   toggleNameField,
+  setSelectedStamp,
 } from "./slices/configurationSlice";
 import { type RootState } from "./store";
 import { BaseColor } from "./utils/enums";
@@ -90,6 +91,10 @@ function App() {
     );
   }
 
+  function onSelectStamp(entry: string): void {
+    dispatch(setSelectedStamp(entry));
+  }
+
   return (
     <div className="h-screen">
       <div className="flex flex-wrap">
@@ -107,6 +112,7 @@ function App() {
                   onPositionChange={onSwap}
                   onRemoveStamp={onRemoveStampList}
                   resetTrigger={resetSwapyTrigger}
+                  onSelectStamp={onSelectStamp}
                 />
               </div>
             </div>
