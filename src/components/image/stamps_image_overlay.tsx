@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Swapy, createSwapy } from "swapy";
-import { Configuration } from "../../model/image_data_models";
+import { type Swapy, createSwapy } from "swapy";
+import { type Configuration } from "../../model/image_data_models";
 import { stampsDatabase } from "../../utils/stamps_database";
 import StampImage from "./stamp_image";
 

@@ -1,6 +1,6 @@
 import { baseDatabase, stampsDatabase } from "@/utils/stamps_database";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Configuration, Stamp } from "../model/image_data_models";
+import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
+import type { Configuration, Stamp } from "../model/image_data_models";
 import { BaseColor } from "../utils/enums";
 
 const initialState: Configuration = {

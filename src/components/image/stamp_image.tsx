@@ -1,4 +1,4 @@
-import { Stamp } from "../../model/image_data_models";
+import { type Stamp } from "../../model/image_data_models";
 
 interface StampImageProps {
   stamp: Stamp;

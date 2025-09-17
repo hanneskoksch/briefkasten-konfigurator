@@ -9,7 +9,7 @@ import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
 import { Button } from "./components/ui/button";
 import NameField from "./img/nametag.png";
-import { Base } from "./model/image_data_models";
+import { type Base } from "./model/image_data_models";
 import {
   addStamp,
   changeBaseColor,
@@ -19,7 +19,7 @@ import {
   setStampPositions,
   toggleNameField,
 } from "./slices/configurationSlice";
-import { RootState } from "./store";
+import { type RootState } from "./store";
 import { BaseColor } from "./utils/enums";
 import { baseDatabase, stampsDatabase } from "./utils/stamps_database";
 
