@@ -5,4 +5,4 @@ export const BaseColor = {
   Green: "bg-glazegreen",
 } as const;
 
-export type BaseColor = typeof BaseColor[keyof typeof BaseColor];
+export type BaseColor = (typeof BaseColor)[keyof typeof BaseColor];

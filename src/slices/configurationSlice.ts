@@ -76,7 +76,10 @@ export const configurationSlice = createSlice({
     ) => {
       state.color = action.payload;
     },
-    setSelectedStamp: (state: Configuration, action: PayloadAction<string | null>) => {
+    setSelectedStamp: (
+      state: Configuration,
+      action: PayloadAction<string | null>,
+    ) => {
       state.selectedStamp = action.payload;
     },
     randomConfiguration: (state: Configuration) => {
@@ -111,6 +114,6 @@ export const {
   changeBaseColor,
   randomConfiguration,
   setSelectedStamp,
-  } = configurationSlice.actions;
+} = configurationSlice.actions;
 
 export default configurationSlice.reducer;
