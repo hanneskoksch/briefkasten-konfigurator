@@ -1,3 +1,10 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
@@ -5,6 +12,7 @@ import { ResetIcon, ShuffleIcon } from "@radix-ui/react-icons";
 import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BetaVersionLabel from "./components/beta_version_label/beta_version_label";
+import Details from "./components/configurator/details";
 import StampSelectorBoxes from "./components/configurator/stamp_selector_boxes";
 import StampsImageOverlay from "./components/image/stamps_image_overlay";
 import { Button } from "./components/ui/button";
@@ -16,9 +24,9 @@ import {
   randomConfiguration,
   removeStamp,
   resetConfiguration,
+  setSelectedStamp,
   setStampPositions,
   toggleNameField,
-  setSelectedStamp,
 } from "./slices/configurationSlice";
 import { type RootState } from "./store";
 import { BaseColor } from "./utils/enums";
@@ -31,6 +39,9 @@ function App() {
   // State
   const configurationState = useSelector(
     (state: RootState) => state.configuration,
+  );
+  const selectedStamp = useSelector(
+    (state: RootState) => state.configuration.selectedStamp,
   );
   const colorState = useSelector(
     (state: RootState) => state.configuration.color,
@@ -80,7 +91,7 @@ function App() {
     (stampPositions: { [key: number]: string | null }): void => {
       dispatch(setStampPositions(stampPositions));
     },
-    [dispatch]
+    [dispatch],
   );
 
   function getBase(): string {
@@ -179,7 +190,24 @@ function App() {
             </p>
             <StampSelectorBoxes onClick={onAddStampList} />
           </div>
-
+          <Dialog
+            open={selectedStamp !== null}
+            onOpenChange={() => {
+              dispatch(setSelectedStamp(null));
+            }}
+          >
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Details</DialogTitle>
+                <DialogDescription>
+                  <Details
+                    stampString={selectedStamp!}
+                    onRemove={onRemoveStampList}
+                  />
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
           <div className="space-y-2">
             <h3 className="font-semibold">Konfiguration</h3>
             <div className="space-x-3">

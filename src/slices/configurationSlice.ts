@@ -64,6 +64,8 @@ export const configurationSlice = createSlice({
         }
       }
       state.stamps = newStamps;
+      // Also reset selected stamp if any stamp was removed
+      state.selectedStamp = null;
     },
     toggleNameField: (state: Configuration, action: PayloadAction<boolean>) => {
       state.nameField = action.payload;
