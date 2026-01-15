@@ -199,13 +199,12 @@ function App() {
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Details</DialogTitle>
-                <DialogDescription>
-                  <Details
-                    stampString={selectedStamp!}
-                    onRemove={onRemoveStampList}
-                  />
-                </DialogDescription>
+                <DialogDescription></DialogDescription>
               </DialogHeader>
+              <Details
+                stampString={selectedStamp!}
+                onRemove={onRemoveStampList}
+              />
             </DialogContent>
           </Dialog>
           <div className="space-y-2">
