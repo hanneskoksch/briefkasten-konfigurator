@@ -57,7 +57,8 @@
       "swapy@0.4.1": "patches/swapy@0.4.1.patch"
     },
     "onlyBuiltDependencies": [
-      "@swc/core"
+      "@swc/core",
+      "esbuild"
     ]
   }
 }
